@@ -21,13 +21,15 @@ public class XPathTest {
     private static WebDriver driver;
 
     @BeforeAll
-    public static void setUpDriver(){
+    public static void setUpDriver() {
         System.setProperty("webdriver.chrome.driver", "resources/chromedriver");
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.setHeadless(true);
         driver = new ChromeDriver(chromeOptions);
         // Implicity wait -> max czas na znalezienie elementu na stronie
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.manage()
+                .timeouts()
+                .implicitlyWait(10, TimeUnit.SECONDS);
     }
 
     @BeforeEach
@@ -41,54 +43,54 @@ public class XPathTest {
     }
 
     @Test
-    public void testNameNode(){
+    public void testNameNode() {
         //Pobiera element html
         WebElement html = driver.findElement(By.xpath("html"));
         assertNotNull(html);
     }
 
     @Test
-    public void testSlashNode(){
+    public void testSlashNode() {
         WebElement element = driver.findElement(By.xpath("html/body/div"));
         assertNotNull(element);
     }
 
     @Test
-    public void testDoubleSlashNode(){
+    public void testDoubleSlashNode() {
         List<WebElement> elements = driver.findElements(By.xpath("//input"));
-        for (WebElement element: elements){
+        for ( WebElement element : elements ) {
             System.out.println(element.getSize());
         }
         assertNotNull(elements);
     }
 
     @Test
-    public void testSecondInputNode(){
+    public void testSecondInputNode() {
         WebElement element = driver.findElement(By.xpath("//input[2]"));
         assertNotNull(element);
     }
 
     @Test
-    public void testDoubleDotsNode(){
+    public void testDoubleDotsNode() {
         List<WebElement> elements = driver.findElements(By.xpath("//input/.."));
-        for (WebElement element: elements){
+        for ( WebElement element : elements ) {
             System.out.println(element.getTagName());
         }
         assertNotNull(elements);
     }
 
     @Test
-    public void testAtributeNode(){
+    public void testAtributeNode() {
         List<WebElement> elements = driver.findElements(By.xpath("//input[@value]"));
-        for (WebElement element: elements){
+        for ( WebElement element : elements ) {
             System.out.println(element.getAttribute("value"));
         }
         assertNotNull(elements);
     }
 
     @Test
-    public void testExactAtributeNode(){
-        WebElement element = driver.findElement(By.xpath("//input[@value = 'Szukaj w Google']"));
+    public void testExactAtributeNode() {
+        WebElement element = driver.findElement(By.xpath("//input[@value = 'Google Search']"));
         System.out.println(element.getAttribute("value"));
         assertNotNull(element);
     }
