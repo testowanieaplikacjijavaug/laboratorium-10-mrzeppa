@@ -64,7 +64,6 @@ public class BingSearchTest {
         element.sendKeys(Keys.ENTER);
 
         WebElement first = driver.findElement(By.cssSelector("#b_content > main > #b_results > .b_algo > h2 > a"));
-
         assertNotNull(first.getText());
     }
 
@@ -80,7 +79,7 @@ public class BingSearchTest {
     }
 
     @Test
-    public void testUnableToLocateElement() {
+    public void notFindingElementTest() {
         try {
             driver.findElement(By.xpath("Invalid"));
             fail();
