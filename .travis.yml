@@ -6,7 +6,6 @@ addons:
   chrome: stable
 before_install:
   - chmod +x resources/chromedriver
-  - chmod +x resources/operadriver
   - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
 sudo: true
 notifications:
