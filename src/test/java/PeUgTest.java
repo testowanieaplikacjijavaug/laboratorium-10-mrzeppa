@@ -19,7 +19,7 @@ public class PeUgTest {
         System.setProperty("webdriver.chrome.driver", "resources/chromedriver");
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.setHeadless(true);
-        driver = new ChromeDriver();
+        driver = new ChromeDriver(chromeOptions);
         // Implicity wait -> max czas na znalezienie elementu na stronie
         driver.manage()
                 .timeouts()
